@@ -1,0 +1,5 @@
+persistence:
+  defaultClass: true
+defaultSettings:
+  storageMinimalAvailablePercentage: 10
+  replicaAutoBalance: "best-effort"

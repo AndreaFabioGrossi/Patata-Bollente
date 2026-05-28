@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://default.svc
+    namespace: kube-system
+  sources:
+    - repoURL: oci://quay.io/cilium/charts
+      chart: cilium
+      targetRevision: 1.19.4
+      ref: chart-ufficiale
+    - repoURL: https://github.com/AndreaFabioGrossi/Patata-Bollente.git
+      targetRevision: HEAD
+      path: charts/cilium
+      helm:
+        valueFiles:
+          - $chart-ufficiale/values.yaml
+          - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
