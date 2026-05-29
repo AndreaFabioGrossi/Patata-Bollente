@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: harbor
+  name: argocd
   namespace: argocd
 spec:
   project: default
   destination:
     server: https://default.svc
-    namespace: harbor
+    namespace: argocd
   sources:
-    - repoURL: https://goharbor.io
-      chart: harbor
-      targetRevision: 1.16.0
+    - repoURL: https://github.io
+      chart: argo-cd
+      targetRevision: 7.3.11 # Versione stabile del chart Helm di Argo CD
       ref: chart-ufficiale
     - repoURL: https://github.com/AndreaFabioGrossi/Patata-Bollente.git
       targetRevision: HEAD
-      path: charts/harbor
+      path: argocd
       helm:
         valueFiles:
           - $chart-ufficiale/values.yaml

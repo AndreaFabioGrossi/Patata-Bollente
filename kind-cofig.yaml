@@ -1,0 +1,30 @@
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+
+# 1. Disattiva la rete standard di KinD per far funzionare Cilium
+networking:
+  disableDefaultCNI: true
+  kubeProxyMode: "none"   # Consigliato: Cilium sostituirà interamente kube-proxy
+
+# 2. Crea una struttura a 3 Nodi (1 Master con porte aperte e 2 Worker per Longhorn)
+nodes:
+- role: control-plane
+  # APRIAMO LE PORTE VERSO IL MAC
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 80
+    protocol: TCP
+  - containerPort: 443
+    hostPort: 443
+    protocol: TCP
+
+- role: worker
+  # Permette a Longhorn di salvare i dati persistenti sul tuo Mac
+  extraMounts:
+  - hostPath: /var/lib/longhorn
+    containerPath: /var/lib/longhorn
+
+- role: worker
+  extraMounts:
+  - hostPath: /var/lib/longhorn
+    containerPath: /var/lib/longhorn

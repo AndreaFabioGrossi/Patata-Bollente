@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cilium
+  name: longhorn
   namespace: argocd
 spec:
   project: default
   destination:
     server: https://default.svc
-    namespace: kube-system
+    namespace: longhorn-system
   sources:
-    - repoURL: oci://quay.io/cilium/charts
-      chart: cilium
-      targetRevision: 1.19.4
+    - repoURL: https://longhorn.io
+      chart: longhorn
+      targetRevision: 1.7.0
       ref: chart-ufficiale
     - repoURL: https://github.com/AndreaFabioGrossi/Patata-Bollente.git
       targetRevision: HEAD
-      path: charts/cilium
+      path: longhorn
       helm:
         valueFiles:
           - $chart-ufficiale/values.yaml
