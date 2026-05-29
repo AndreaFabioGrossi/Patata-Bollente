@@ -1,0 +1,24 @@
+# File di sistema del Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# File degli ambienti di sviluppo (es. VS Code o Xcode)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Cartelle dei pacchetti e delle dipendenze (si scaricano all'occorrenza, non si pushano)
+node_modules/
+vendor/
+.venv/
+env/
+
+# File segreti e password (NON caricarli mai!)
+.env
+.env.local
+*.pem
+*.key
