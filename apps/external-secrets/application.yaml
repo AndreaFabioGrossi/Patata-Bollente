@@ -10,10 +10,18 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: external-secrets
-  source:
-    repoURL: https://github.com/AndreaFabioGrossi/Patata-Bollente.git
-    targetRevision: HEAD
-    path: apps/external-secrets
+  sources:
+    - repoURL: https://external-secrets.io
+      chart: external-secrets
+      targetRevision: 0.9.11
+      ref: chart-ufficiale
+    - repoURL: https://github.com/AndreaFabioGrossi/Patata-Bollente.git
+      targetRevision: HEAD
+      path: apps/external-secrets
+      helm:
+        valueFiles:
+          - $chart-ufficiale/values.yaml
+          - values.yaml
   syncPolicy:
     automated:
       prune: true
