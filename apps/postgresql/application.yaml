@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/AndreaFabioGrossi/Patata-Bollente.git
     targetRevision: HEAD
-    path: postgresql
+    path: apps/postgresql
   syncPolicy:
     automated:
       prune: true

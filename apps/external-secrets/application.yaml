@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: external-secrets
   sources:
-    - repoURL: https://external-secrets.io
+    - repoURL: https://chart.external-secrets.io
       chart: external-secrets
       targetRevision: 0.9.11
       ref: chart-ufficiale
