@@ -1,26 +1,3 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: root-app
-#   namespace: argocd
-#   finalizers:
-#     - resources-finalizer.argocd.argoproj.io # Rimuove in modo pulito le app se cancelli la root
-# spec:
-#   project:default
-#   source:
-#     repoURL: https://github.com/AndreaFabioGrossi/Patata-Bollente.git
-#     targetRevision: HEAD 
-#     path: apps
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: argocd
-#   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
-#     syncOptions:
-#       - CreateNamespace=true
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -32,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: argocd
   source:
-    repoURL: //github.com/AndreaFabioGrossi/Patata-Bollente.git
+    repoURL: https://github.com/AndreaFabioGrossi/Patata-Bollente.git
     targetRevision: HEAD
     path: apps
     directory:
