@@ -17,7 +17,7 @@ spec:
       ref: chart-ufficiale
     - repoURL: https://github.com/AndreaFabioGrossi/Patata-Bollente.git
       targetRevision: HEAD
-      path: apps/external-secrets
+      path: bootstrap/external-secrets-crd
       helm:
         valueFiles:
           - $chart-ufficiale/values.yaml
